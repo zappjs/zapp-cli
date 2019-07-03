@@ -17,13 +17,14 @@ program
 
     Object.keys(project.generates).forEach((fileName) => {
       const fileContents = project.generates[fileName];
-      const dirName = path.dirname(fileName);
+      const filePath = path.normalize(fileName);
+      const dirName = path.dirname(filePath);
       if (!fs.existsSync(dirName)) {
         fs.mkdirSync(dirName, { recursive: true });
       }
-      fs.writeFileSync(`${dirName}/${fileName}`, fileContents);
+      fs.writeFileSync(filePath, fileContents);
 
-      console.log(`- ${dirName}/${fileName}`);
+      console.log(`- ${filePath}`);
     });
   });
 
