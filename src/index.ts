@@ -11,12 +11,12 @@ program
   .command('generate')
   .action(async () => {
     // load zapp project
-    const project = require(`${process.cwd()}/.zapp/config`).default;
+    const project = require(`${process.cwd()}/.zapp/zapp`).default;
 
     console.log('Generated Files:');
 
-    Object.keys(project.generates).forEach((fileName) => {
-      const fileContents = project.generates[fileName];
+    Object.keys(project).forEach((fileName) => {
+      const fileContents = project[fileName];
       const filePath = path.normalize(fileName);
       const dirName = path.dirname(filePath);
       if (!fs.existsSync(dirName)) {
