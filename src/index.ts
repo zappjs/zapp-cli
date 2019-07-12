@@ -25,8 +25,8 @@ program
         }
         return 0;
       })
-      .forEach((fileName) => {
-        const fileContents = files[fileName];
+      .forEach(async (fileName) => {
+        const fileContents = await files[fileName];
         const filePath = path.normalize(fileName);
         const dirName = path.dirname(filePath);
         if (!fs.existsSync(dirName)) {
