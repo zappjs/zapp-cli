@@ -11,7 +11,7 @@ program
   .command('generate')
   .action(async () => {
     // load zapp project
-    const files = require(`${process.cwd()}/.zapp/zapp`).default;
+    const files = await require(`${process.cwd()}/.zapp/zapp`).default;
 
     console.log('Generated Files:');
 
