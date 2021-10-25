@@ -29,6 +29,11 @@ program
         const fileContents = await files[fileName];
         const filePath = path.normalize(fileName);
         const dirName = path.dirname(filePath);
+
+        if (typeof fileContents !== 'string') {
+          console.log(`- ${filePath} (skipped)`);
+          return;
+        }
         if (!fs.existsSync(dirName)) {
           fs.mkdirSync(dirName, { recursive: true });
         }
